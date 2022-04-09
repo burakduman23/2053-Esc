@@ -44,6 +44,10 @@ public class PlayerController : MonoBehaviour
         {
             rend.transform.position = new Vector2(7.34f, 0.8f);
         }
+        if (GameController.previousgameState == GameController.GameState.LEVEL5 && GameController.gameState == GameController.GameState.LEVEL0)
+        {
+            rend.transform.position = new Vector2(7.53f, -3.4f);
+        }
     }
 
     // Update is called once per frame
@@ -142,7 +146,7 @@ public class PlayerController : MonoBehaviour
             SceneManager.UnloadSceneAsync("Level3");
             GameController.previousgameState = GameController.GameState.LEVEL3;
         }
-        else if (other.CompareTag("Door3") && GameController.gameState == GameController.GameState.LEVEL0 )
+        else if (other.CompareTag("Door3") && GameController.gameState == GameController.GameState.LEVEL0 && GameController.key2)
         {
             SceneManager.LoadScene("Level3");
             SceneManager.UnloadSceneAsync("EntranceLevel");
@@ -166,7 +170,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (other.CompareTag("Door4") && GameController.gameState == GameController.GameState.LEVEL3 && GameController.key3)
+        if (other.CompareTag("Door4") && GameController.gameState == GameController.GameState.LEVEL3 && GameController.key5)
         {
             SceneManager.LoadScene("Level4");
             SceneManager.UnloadSceneAsync("Level3");
@@ -182,7 +186,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (other.CompareTag("Door5") && GameController.gameState == GameController.GameState.LEVEL0 )
+        if (other.CompareTag("Door5") && GameController.gameState == GameController.GameState.LEVEL0 && GameController.key3)
         {
             SceneManager.LoadScene("Level5");
             SceneManager.UnloadSceneAsync("EntranceLevel");
@@ -198,7 +202,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (other.CompareTag("Door6") && GameController.gameState == GameController.GameState.LEVEL5)
+        if (other.CompareTag("Door6") && GameController.gameState == GameController.GameState.LEVEL5 && GameController.key4)
         {
             SceneManager.LoadScene("Level6");
             SceneManager.UnloadSceneAsync("Level5");
@@ -214,12 +218,13 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (other.CompareTag("Fire"))
+        if (other.CompareTag("Exit") && GameController.key6)
         {
-            Destroy(gameObject);
-            GameController.gameState = GameController.GameState.LOSE;
+            SceneManager.UnloadSceneAsync("Level1");
+            GameController.gameState = GameController.GameState.WIN;
         }
-        if (other.CompareTag("Trap"))
+
+        if (other.CompareTag("Fire") || other.CompareTag("Trap"))
         {
             Destroy(gameObject);
             GameController.gameState = GameController.GameState.LOSE;
