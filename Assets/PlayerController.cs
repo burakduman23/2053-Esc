@@ -80,17 +80,26 @@ public class PlayerController : MonoBehaviour
         }
 
        
-            
+
         if (velocity.x > 0)
         {
             GameController.lastDirection = 2;
-         
+            anim.Play("WalkRight");
+
         }
         else if (velocity.x < 0)
         {
             GameController.lastDirection = 1;
-            if(velocity.y < 0 || velocity.y > 0)
-                anim.Play("WalkLeft");
+            anim.Play("WalkLeft");
+
+        }
+        else if ((velocity.y > 0 || velocity.y < 0) && GameController.lastDirection == 2)
+        {
+            anim.Play("WalkRight");
+        }
+        else if ((velocity.y > 0 || velocity.y < 0) && GameController.lastDirection == 1)
+        {
+            anim.Play("WalkLeft");
 
         }
         else
