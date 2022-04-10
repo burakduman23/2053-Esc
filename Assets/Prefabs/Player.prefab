@@ -75,7 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300018, guid: f776e2e9690501e41a2e5b81ceb440b9, type: 3}
+  m_Sprite: {fileID: -3300934862606556241, guid: e23527a8e222a1146ad4483e9d5a30ba,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -165,7 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  lockedDoor: {fileID: 8300000, guid: 553138d05c167e844970b61dd9256bf5, type: 3}
 --- !u!82 &-3080704222138209919
 AudioSource:
   m_ObjectHideFlags: 0
