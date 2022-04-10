@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
 
     public static bool key1, key2, key3, key4, key5, key6;
     public static int lastDirection;
+    
     public enum GameState { MENU, LEVEL0, LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, LEVEL6, LOSE, WIN };
 
     public static GameState gameState = GameController.GameState.MENU;
@@ -25,13 +26,10 @@ public class GameController : MonoBehaviour
         {
             if (gameState == GameController.GameState.MENU)
                 title.text = "ESCAPE!";
-            else if (gameState == GameController.GameState.WIN)
-                title.text = "You Win!";
-            else if (gameState == GameController.GameState.LOSE)
-                title.text = "You Died, Press R to Restart the Level!";
         }
-
         lastDirection = 2;
+
+       
     }
 
     public void StartGame()
@@ -45,5 +43,5 @@ public class GameController : MonoBehaviour
         Application.Quit();
     }
 
-    
+
 }
