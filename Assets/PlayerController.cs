@@ -11,10 +11,11 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer rend;
     private Animator anim;
     public float speed = 4.0f;
-   
-  //  public Sprite leftStart;
+    public AudioClip lockedDoor;
+    //  public Sprite leftStart;
     
-    
+
+     AudioSource  audio;
 
     // Start is called before the first frame update
     void Start()
@@ -22,17 +23,17 @@ public class PlayerController : MonoBehaviour
         velocity = new Vector3(0f, 0f, 0f);
         rend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        
 
+        audio = GetComponent<AudioSource>();
 
-        if(GameController.previousgameState == GameController.GameState.LEVEL2 && GameController.gameState == GameController.GameState.LEVEL1)
+        if (GameController.previousgameState == GameController.GameState.LEVEL2 && GameController.gameState == GameController.GameState.LEVEL1)
         {
             rend.transform.position = new Vector2(-6.57f, -4.1f);
         }
 
         if (GameController.previousgameState == GameController.GameState.LEVEL3 && GameController.gameState == GameController.GameState.LEVEL0)
         {
-            rend.transform.position = new Vector2(7.35f, -0.97f);
+            rend.transform.position = new Vector2(7.35f, 1.921743f);
         }
 
         if (GameController.previousgameState == GameController.GameState.LEVEL4 && GameController.gameState == GameController.GameState.LEVEL3)
@@ -156,10 +157,13 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Door2") && GameController.gameState == GameController.GameState.LEVEL1 && GameController.key1)
         {
+
             SceneManager.LoadScene("Level2");
             SceneManager.UnloadSceneAsync("Level1");
             GameController.gameState = GameController.GameState.LEVEL2;
             GameController.previousgameState = GameController.GameState.LEVEL1;
+
+            
         }
         else if (other.CompareTag("Door2") && GameController.gameState == GameController.GameState.LEVEL2)
         {
@@ -224,11 +228,11 @@ public class PlayerController : MonoBehaviour
             GameController.gameState = GameController.GameState.WIN;
         }
 
-        if (other.CompareTag("Fire") || other.CompareTag("Trap"))
+/*        if (other.CompareTag("Fire") || other.CompareTag("Trap"))
         {
             Destroy(gameObject);
             GameController.gameState = GameController.GameState.LOSE;
-        }
+        }*/
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -250,8 +254,11 @@ public class PlayerController : MonoBehaviour
                     GameController.key5 = true;
                 if (GameController.gameState == GameController.GameState.LEVEL6)
                     GameController.key6 = true;
+                audio.Play();
             }
+
         }
+
     }
 
 }
