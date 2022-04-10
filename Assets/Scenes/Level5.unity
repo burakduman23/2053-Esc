@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fire: {fileID: 1694459818883073054, guid: c8be1a78a5ac0dc4a8e398db25442e7d, type: 3}
-  speed: 1.9
+  speed: 0.9
 --- !u!212 &1795686901
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1610,7 +1610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fire: {fileID: 1694459818883073054, guid: c8be1a78a5ac0dc4a8e398db25442e7d, type: 3}
-  speed: 1.9
+  speed: 0.4
 --- !u!212 &2088682005
 SpriteRenderer:
   m_ObjectHideFlags: 0
