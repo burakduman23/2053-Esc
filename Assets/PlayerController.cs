@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer rend;
     private Animator anim;
     public float speed = 4.0f;
-
+    private int lastInput;
     private bool triggerStay = false;
 
 
@@ -51,11 +51,15 @@ public class PlayerController : MonoBehaviour
         {
             rend.transform.position = new Vector2(7.53f, -3.4f);
         }
+
+        lastInput = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         var dist = (transform.position - Camera.main.transform.position).z;
         var leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(.025f, 0, dist)).x;
         var rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(.97f, 0, dist)).x;
@@ -67,7 +71,7 @@ public class PlayerController : MonoBehaviour
         float height = rend.bounds.size.y;
         velocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
      
-
+        
         //make sure the obect is inside the borders
         if ((transform.position.x <= leftBorder + width / 2.0) && velocity.x < 0f)
         {
@@ -230,11 +234,16 @@ public class PlayerController : MonoBehaviour
             GameController.gameState = GameController.GameState.WIN;
         }
 
-/*        if (other.CompareTag("Fire") || other.CompareTag("Trap"))
+        if (other.CompareTag("Fire") || other.CompareTag("Trap"))
         {
-            Destroy(gameObject);
+            /*Destroy(gameObject);
             GameController.gameState = GameController.GameState.LOSE;
-        }*/
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("WLRScene");*/
+
+
+
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
