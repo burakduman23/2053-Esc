@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,8 +15,8 @@ public class PlayerController : MonoBehaviour
     private int lastInput;
     private bool triggerStay = false;
 
-
-
+    public Text storyText;
+    private bool[] storyCompleted = new bool[17];
 
     AudioSource audio;
 
@@ -27,6 +28,11 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         audio = GetComponent<AudioSource>();
+
+        for (int i = 0; i < storyCompleted.Length; i++)
+        {
+            storyCompleted[i] = false;
+        }
 
         if (GameController.previousgameState == GameController.GameState.LEVEL2 && GameController.gameState == GameController.GameState.LEVEL1)
         {
@@ -125,8 +131,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         transform.Translate(velocity * Time.deltaTime * speed);
-            
-
+        HandleStory();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -236,13 +241,10 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Fire") || other.CompareTag("Trap"))
         {
-            /*Destroy(gameObject);
+            Destroy(gameObject);
             GameController.gameState = GameController.GameState.LOSE;
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene("WLRScene");*/
-
-
-
+            SceneManager.LoadScene("WLRScene");
         }
     }
 
@@ -270,6 +272,203 @@ public class PlayerController : MonoBehaviour
 
         }
 
+    }
+
+    private void HandleStory()
+    {
+        if (storyText != null)
+        {
+            if (GameController.key1 == false)
+            {
+                if (!storyCompleted[0])
+                {
+                    storyText.text = "*You wake up in a strange room* \n (press 'SPACEBAR' to skip)";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[0] = true;
+                    }
+                }
+                else if (storyCompleted[0] == true && !storyCompleted[1])
+                {
+                    storyText.color = Color.red;
+                    storyText.text = "Voice: HAHHA! You are finally awake.";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[1] = true;
+                    }
+                }
+                else if (storyCompleted[1] == true && !storyCompleted[2])
+                {
+                    storyText.color = Color.white;
+                    storyText.text = "You: Where am I?";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[2] = true;
+                    }
+                }
+                else if (storyCompleted[2] == true && !storyCompleted[3])
+                {
+                    storyText.color = Color.red;
+                    storyText.text = "Voice: You are in my dungeon. I kidnapped you!";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[3] = true;
+                    }
+                }
+                else if (storyCompleted[3] == true && !storyCompleted[4])
+                {
+                    storyText.color = Color.white;
+                    storyText.text = "You: Uhhh... Why did you kidnap me?";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[4] = true;
+                    }
+                }
+                else if (storyCompleted[4] == true && !storyCompleted[5])
+                {
+                    storyText.color = Color.red;
+                    storyText.text = "Voice: I don't really know. The storyline is not that great.";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[5] = true;
+                    }
+                }
+                else if (storyCompleted[5] == true && !storyCompleted[6])
+                {
+                    storyText.text = "Voice: But I kidnapped you!!!";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[6] = true;
+                    }
+                }
+                else if (storyCompleted[6] == true && !storyCompleted[7])
+                {
+                    storyText.color = Color.white;
+                    storyText.text = "You: Okay, what do I do now?";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[7] = true;
+                    }
+                }
+                else if (storyCompleted[7] == true && !storyCompleted[8])
+                {
+                    storyText.color = Color.red;
+                    storyText.text = "Voice: There are some keys and some locked doors around the dungeon. Go find them and open locked doors. And solve the dungeon's puzzle to leave";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[8] = true;
+                    }
+                }
+                else if (storyCompleted[8] == true && !storyCompleted[9])
+                {
+                    storyText.color = Color.red;
+                    storyText.text = "Voice: So get going. Good luck.";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[9] = true;
+                        storyText.text = "";
+                    }
+                }
+
+            }
+
+
+            if (GameController.key1 == true && GameController.key2 == false)
+            {
+
+                if (!storyCompleted[9])
+                {
+                    storyText.color = Color.red;
+                    storyText.text = "Voice: Oh so you found a key? Keep up the hard work. You will be out soon. heheheh...";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[9] = true;
+                    }
+                }
+                else if (storyCompleted[9] == true && !storyCompleted[10])
+                {
+                    storyText.color = Color.white;
+                    storyText.text = "You: So is that all? And where are you? How do I hear you? There is nothing in this room.";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[10] = true;
+                    }
+                }
+                else if (storyCompleted[10] == true && !storyCompleted[11])
+                {
+                    storyText.color = Color.red;
+                    storyText.text = "Voice: Yeah, that's all. I told you the storyline wasn't good. ";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[11] = true;
+                    }
+                }
+                else if (storyCompleted[11] == true && !storyCompleted[12])
+                {
+                    storyText.color = Color.red;
+                    storyText.text = "Voice: And devs couldn't find an asset for me so I am invisible. Stop talking and find some keys!";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[12] = true;
+                        storyText.text = "";
+                    }
+                }
+
+            }
+
+
+            if (GameController.key2 == true && GameController.key3 == false)
+            {
+
+                if (!storyCompleted[13])
+                {
+                    storyText.color = Color.red;
+                    storyText.text = "Voice: Get the first clue? Don't forget it. It will help you solve the last puzzle.";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[13] = true;
+                    }
+                }
+                else if (storyCompleted[13] == true && !storyCompleted[14])
+                {
+                    storyText.color = Color.white;
+                    storyText.text = "You: *silence* ";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[14] = true;
+                        storyText.text = "";
+                    }
+                }
+            }
+
+            if (GameController.key4)
+            {
+                if (!storyCompleted[15])
+                {
+                    storyText.color = Color.red;
+                    storyText.text = "Voice: You only have one left? Good job buddy.";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[15] = true;
+                        storyText.text = "";
+                    }
+                }
+            }
+
+            if (GameController.key6)
+            {
+                if (!storyCompleted[16])
+                {
+                    storyText.color = Color.red;
+                    storyText.text = "Voice: Let's go! You got all the clues to get out of here now.";
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        storyCompleted[16] = true;
+                        storyText.text = "";
+                    }
+                }
+            }
+        }
     }
 
 }
