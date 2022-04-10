@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,19 +15,27 @@ public class PlayerController : MonoBehaviour
     public AudioClip lockedDoor;
     //  public Sprite leftStart;
     
+    public Text storyText;
 
     AudioSource  audio;
 
-    private bool[] storyCompleted = new bool[25];
+    private bool[] storyCompleted = new bool[17];
 
     // Start is called before the first frame update
     void Start()
     {
+
+
         velocity = new Vector3(0f, 0f, 0f);
         rend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 
         audio = GetComponent<AudioSource>();
+
+        for(int i = 0; i < storyCompleted.Length; i++)
+        {
+            storyCompleted[i] = false;
+        }
 
         if (GameController.previousgameState == GameController.GameState.LEVEL2 && GameController.gameState == GameController.GameState.LEVEL1)
         {
