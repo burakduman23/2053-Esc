@@ -19,12 +19,24 @@ public class PlayerController : MonoBehaviour
 
     AudioSource  audio;
 
+<<<<<<< Updated upstream
     private bool[] storyCompleted = new bool[17];
 
     // Start is called before the first frame update
     void Start()
     {
 
+=======
+    public Text storyText;
+    private bool[] storyCompleted = new bool[17];
+
+
+    AudioSource audio;
+
+    // Start is called before the first frame update
+    void Start()
+    { 
+>>>>>>> Stashed changes
 
         velocity = new Vector3(0f, 0f, 0f);
         rend = GetComponent<SpriteRenderer>();
@@ -32,7 +44,11 @@ public class PlayerController : MonoBehaviour
 
         audio = GetComponent<AudioSource>();
 
+<<<<<<< Updated upstream
         for(int i = 0; i < storyCompleted.Length; i++)
+=======
+        for (int i = 0; i < storyCompleted.Length; i++)
+>>>>>>> Stashed changes
         {
             storyCompleted[i] = false;
         }
@@ -255,7 +271,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(other.gameObject);
                 if(GameController.gameState == GameController.GameState.LEVEL1)
                     GameController.key1 = true;
-                if (GameController.gameState == GameController.GameState.LEVEL2)
+                if (GameController.gameState == GameController.GameState.LEVEL2)                 
                     GameController.key2 = true;
                 if (GameController.gameState == GameController.GameState.LEVEL3)
                     GameController.key3 = true;
@@ -272,7 +288,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
+<<<<<<< Updated upstream
         private void HandleStory() {
+=======
+    private void HandleStory()
+    {
+>>>>>>> Stashed changes
         if (storyText != null)
         {
             if (GameController.key1 == false)
@@ -370,7 +391,12 @@ public class PlayerController : MonoBehaviour
             }
 
 
+<<<<<<< Updated upstream
             if (GameController.key1 == true && GameController.key2 == false) {
+=======
+            if (GameController.key1 == true && GameController.key2 == false)
+            {
+>>>>>>> Stashed changes
 
                 if (!storyCompleted[9])
                 {
@@ -413,7 +439,12 @@ public class PlayerController : MonoBehaviour
             }
 
 
+<<<<<<< Updated upstream
             if (GameController.key2 == true && GameController.key3 == false) {
+=======
+            if (GameController.key2 == true && GameController.key3 == false)
+            {
+>>>>>>> Stashed changes
 
                 if (!storyCompleted[13])
                 {
@@ -436,7 +467,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+<<<<<<< Updated upstream
             if (GameController.key4) {
+=======
+            if (GameController.key4)
+            {
+>>>>>>> Stashed changes
                 if (!storyCompleted[15])
                 {
                     storyText.color = Color.red;
