@@ -631,6 +631,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1573839038558500158, guid: f7c301960861b2a46b9c7aa85737383f,
+        type: 3}
+      propertyPath: storyText
+      value: 
+      objectReference: {fileID: 1371573754}
     - target: {fileID: 7778517196973346667, guid: f7c301960861b2a46b9c7aa85737383f,
         type: 3}
       propertyPath: m_Name
@@ -706,7 +711,8 @@ PrefabInstance:
       propertyPath: storyText
       value: 
       objectReference: {fileID: 1371573754}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7778517196973346671, guid: f7c301960861b2a46b9c7aa85737383f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f7c301960861b2a46b9c7aa85737383f, type: 3}
 --- !u!1 &1371573752
 GameObject:
@@ -742,8 +748,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 34.9, y: 7.899994}
-  m_SizeDelta: {x: 697.3, y: 100.9}
+  m_AnchoredPosition: {x: 34.9, y: 35.72}
+  m_SizeDelta: {x: 816.6, y: 100.9}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1371573754
 MonoBehaviour:
@@ -766,11 +772,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: bc59919fc1993354380fcb94aca96dcc, type: 3}
-    m_FontSize: 24
+    m_FontSize: 37
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 300
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1

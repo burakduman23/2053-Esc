@@ -10,13 +10,8 @@ public class Level2Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         if (GameController.key2)
-        {
             Destroy(key2.gameObject);
-            
-        }
-        
     }
 
     // Update is called once per frame
@@ -25,12 +20,10 @@ public class Level2Controller : MonoBehaviour
         if (GameController.key2)
         {
             paper.SetActive(true);
-            puzzText.text = "2  III";
         }
         else
         {
             paper.SetActive(false);
-            puzzText.text = "";
         }
     }
 }
